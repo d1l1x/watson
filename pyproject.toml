@@ -12,7 +12,9 @@ requires-python = ">=3.12"
 dependencies = [
     "alpaca-py>=0.42.0",
     "ib-async>=0.1.0",
+    "loguru>=0.7.0",
     "pandas>=2.0.0",
+    "python-dotenv>=1.1.0",
     "sqlalchemy>=2.0.0",
 ]
 
