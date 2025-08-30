@@ -137,6 +137,18 @@ wheels = [
 ]
 
 [[package]]
+name = "finnhub-python"
+version = "2.4.24"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/5d/48/240ee1f707cc82083fdd8ba162e4e9526430d1e8fbdb85246ae3a3b1c5f9/finnhub_python-2.4.24.tar.gz", hash = "sha256:cc505a344b8e73a7ba8174fe9646340493b028c94c6ad4bfe15ae9c078aa2458", size = 13544, upload-time = "2025-06-27T10:09:00.101Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1a/2b/902ab93168c1e17dfb1687436afe544878d4c8aa681d26a9bebea255a73d/finnhub_python-2.4.24-py3-none-any.whl", hash = "sha256:beebd4c31d0792a4b30fb5d2c81176072fa8638a89dd152fc0676f507e594789", size = 11967, upload-time = "2025-06-27T10:08:58.696Z" },
+]
+
+[[package]]
 name = "flake8"
 version = "7.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -696,6 +708,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "alpaca-py" },
+    { name = "finnhub-python" },
     { name = "ib-async" },
     { name = "loguru" },
     { name = "pandas" },
@@ -716,6 +729,7 @@ dev = [
 requires-dist = [
     { name = "alpaca-py", specifier = ">=0.42.0" },
     { name = "black", marker = "extra == 'dev'", specifier = ">=23.0.0" },
+    { name = "finnhub-python", specifier = ">=2.4.0" },
     { name = "flake8", marker = "extra == 'dev'", specifier = ">=6.0.0" },
     { name = "ib-async", specifier = ">=0.1.0" },
     { name = "loguru", specifier = ">=0.7.0" },
