@@ -12,3 +12,7 @@ LOGGING_CONFIG = {
     "max_size": "10 MB",
     "retention": "30 days",
 }
+
+API_KEYS = {
+    "finnhub": os.getenv("FINNHUB_API_KEY"),
+}
