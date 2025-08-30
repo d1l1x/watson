@@ -32,9 +32,6 @@ def setup_logger():
         compression="zip"
     )
     
-    logger.info("Logging configured successfully")
-
-
 def get_logger(name: str):
     """Get a logger instance for a module."""
     return logger.bind(name=name)

@@ -12,6 +12,7 @@ requires-python = ">=3.12"
 dependencies = [
     "alpaca-py>=0.42.0",
     "finnhub-python>=2.4.0",
+    "gitpython>=3.1.0",
     "html5lib>=1.1.0",
     "ib-async>=0.1.0",
     "loguru>=0.7.0",

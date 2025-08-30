@@ -2,10 +2,14 @@ import os
 import argparse
 
 from watson.core.loader import load_strategy_from_path
+from watson.core.banner import welcome
 # from watson.core.strategy.base import BaseStrategy
 
 
 if __name__ == "__main__":
+    # Display welcome banner
+    welcome()
+    
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--strategies", type=str, required=False, 
                        default=os.getenv("STRATEGIES_PATH", "./strategies"))
