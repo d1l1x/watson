@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "watson"
+version = "0.1.0"
+description = "Python package for automating trading strategies"
+readme = "README.md"
+license = {text = "GPL-3.0"}
+requires-python = ">=3.12"
+dependencies = [
+    "alpaca-py>=0.42.0",
+    "ib-async>=0.1.0",
+    "pandas>=2.0.0",
+    "sqlalchemy>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["watson*"]
+
+[tool.setuptools.package-dir]
+"" = "src" 

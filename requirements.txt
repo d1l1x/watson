@@ -1,0 +1,6 @@
+# Core dependencies
+alpaca-py>=0.42.0
+
+sqlalchemy>=2.0.0
+ib_async>=0.1.0
+pandas>=2.0.0
