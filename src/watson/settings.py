@@ -16,3 +16,9 @@ LOGGING_CONFIG = {
 API_KEYS = {
     "finnhub": os.getenv("FINNHUB_API_KEY"),
 }
+
+ALPACA_CONFIG = {
+    "api_key": os.getenv("ALPACA_API_KEY"),
+    "secret_key": os.getenv("ALPACA_SECRET_KEY"),
+    "paper": os.getenv("ALPACA_PAPER", "true").lower() == "true",
+}
