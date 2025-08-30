@@ -22,3 +22,10 @@ ALPACA_CONFIG = {
     "secret_key": os.getenv("ALPACA_SECRET_KEY"),
     "paper": os.getenv("ALPACA_PAPER", "true").lower() == "true",
 }
+
+# Database Configuration
+DATABASE_CONFIG = {
+    "enabled": True,
+    "type": "sqlite",
+    "path": os.getenv("DB_PATH", "./watson.db"),
+}
