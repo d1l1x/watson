@@ -12,6 +12,7 @@ class Strategy(ABC):
         self.mm = None
         self.pm = None
         self.screener = None
+        self.scheduler = None
 
     @abstractmethod
     async def check_entry_conditions(self, open_positions: pd.DataFrame) -> pd.DataFrame:
@@ -29,7 +30,10 @@ class Strategy(ABC):
         if not self.screener is None:
             await self.screener.initialize()
 
-    async def run(self):
+        if not self.scheduler is None:
+            await self.scheduler.initialize()
+
+    async def loop(self):
         if self.pm is None or self.mm is None or self.broker is None:
             raise ValueError("Portfolio manager, money management and broker must be set")
 
@@ -60,3 +64,9 @@ class Strategy(ABC):
         except PortfolioError as e:
             logger.error(f"Error opening trades: {e}")
             return
+
+    async def run(self):
+        if self.scheduler:
+            await self.scheduler.start_in_background()
+        else:
+            await self.loop()

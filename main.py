@@ -23,7 +23,9 @@ if __name__ == "__main__":
     
     args = command_line_arguments()
 
-    strategies = [f for f in pathlib.Path(args.strategies).glob("*.py")]
+    # Filter out files that begin with underscore
+    strategies = [f for f in pathlib.Path(args.strategies).glob("*.py") 
+                  if not f.name.startswith('_')]
 
     strategy_classes = [load_strategy_from_path(str(strategy)) for strategy in strategies]
 
