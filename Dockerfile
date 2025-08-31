@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache python3 py3-pip bash
+RUN apk add --no-cache python3 py3-pip bash git
 
 WORKDIR /app
 
