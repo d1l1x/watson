@@ -1,3 +1,4 @@
+import asyncio
 from abc import ABC, abstractmethod
 import pandas as pd
 from watson.core.portfolio import PortfolioError
@@ -23,17 +24,21 @@ class Strategy(ABC):
         raise NotImplementedError("Subclasses must implement this method")
 
     async def initialize(self):
-        await self.broker.initialize()
-        await self.mm.initialize()
-        await self.pm.initialize()
+        if self.broker is not None:
+            await self.broker.initialize()
+        if self.mm is not None:
+            await self.mm.initialize()
+        if self.pm is not None:
+            await self.pm.initialize()
 
-        if not self.screener is None:
+        if self.screener is not None:
             await self.screener.initialize()
 
-        if not self.scheduler is None:
-            await self.scheduler.initialize()
+        if self.scheduler is not None:
+            await self.scheduler.initialize(self.loop)
 
     async def loop(self):
+        logger.info("Starting strategy loop")
         if self.pm is None or self.mm is None or self.broker is None:
             raise ValueError("Portfolio manager, money management and broker must be set")
 
@@ -64,9 +69,12 @@ class Strategy(ABC):
         except PortfolioError as e:
             logger.error(f"Error opening trades: {e}")
             return
+        logger.info("Strategy loop finished")
 
     async def run(self):
         if self.scheduler:
-            await self.scheduler.start_in_background()
+            await self.scheduler.start()
+            while True:
+                await asyncio.sleep(10)
         else:
             await self.loop()

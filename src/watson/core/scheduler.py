@@ -1,9 +1,8 @@
-from typing import List, Callable, Union
+from typing import List, Callable
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from apscheduler.triggers.interval import IntervalTrigger
-from apscheduler.triggers.date import DateTrigger
-from datetime import time, datetime, timedelta
+from datetime import time
 from abc import ABC, abstractmethod
 
 class Trigger(ABC):
@@ -84,21 +83,13 @@ class Scheduler:
         """Add a new trigger to the scheduler."""
         self.triggers.append(trigger)
     
-    def start(self):
+    async def start(self):
         """Start the scheduler."""
         self.scheduler.start()
     
     def shutdown(self):
         """Shutdown the scheduler."""
         self.scheduler.shutdown()
-    
-    def pause(self):
-        """Pause the scheduler."""
-        self.scheduler.pause()
-    
-    def resume(self):
-        """Resume the scheduler."""
-        self.scheduler.resume()
     
     def get_jobs(self):
         """Get all scheduled jobs."""
